@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import NewsMenuData from "@/components/NewsMenuData.server";
 
 const inter = Inter({ subsets: ["latin"] });
-
+export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: "Mining Discovery",
   description: "Mining Discovery - Your source for mining news and information",
