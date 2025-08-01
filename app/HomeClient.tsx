@@ -17,9 +17,8 @@ import Projects from "@/components/cards/projects";
 import { urlFor } from "./lib/sanity";
 import FloatingVideo from "@/components/FloatingVideo";
 
-const baseUrl ="http://localhost:3000/"
-
-  // process.env.NEXT_PUBLIC_BASE_URL || "https://miningdiscovery.com";
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://miningdiscovery.com";
 
 function getRandomNews(newsArray: any[], count: number, type?: string) {
   if (type === "latest") return newsArray.slice(0, count);
@@ -63,7 +62,7 @@ export default function HomeClient() {
         const newsJson = await newsRes.json();
         const adsRes = await fetch(`${baseUrl}/api/advertisements`);
         const adsJson = await adsRes.json();
-        
+
         setNews(newsJson.data || []);
         setAdvertisments(adsJson.data || []);
         setAdsData(adsJson.data || []);
@@ -76,29 +75,31 @@ export default function HomeClient() {
     fetchData();
   }, []);
 
-  if (loading) return (
-    <div className="flex justify-center items-center min-h-screen">
-      <Image
-        src="/assets/images/loader.gif"
-        alt="Loading..."
-        width={100}
-        height={100}
-        // className="animate-spin"
-      />
-    </div>
-  );
-  
-  if (error) return (
-    <div className="flex justify-center items-center min-h-screen">
-      <div className="text-red-500">Error: {error}</div>
-    </div>
-  );
+  if (loading)
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <Image
+          src="/assets/images/loader.gif"
+          alt="Loading..."
+          width={100}
+          height={100}
+          // className="animate-spin"
+        />
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-red-500">Error: {error}</div>
+      </div>
+    );
 
   // Filter ads by position
   const topAds = advertisments?.filter(
     (ad) => ad.displayOn === "home" && ad.position === "top"
   );
-  
+
   const betweenContentAds = advertisments?.filter(
     (ad) => ad.displayOn === "home" && ad.position === "between-content"
   );
@@ -128,23 +129,20 @@ export default function HomeClient() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Layout */}
         <div className="flex flex-col xl:flex-row gap-4 lg:gap-6 pt-4 md:pt-8">
-          
           {/* Main Content Area */}
           <div className="w-full xl:w-[72%]">
-            
             {/* Top Section */}
             <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 border-b border-gray-400 pb-6 mb-6">
-              
               {/* Small Cards - Hidden on mobile, visible on lg+ */}
               <div className="hidden lg:block lg:w-[25%]">
                 <SmallCard news={getRandomNews(news, 2)} key="smallcard-top" />
               </div>
-              
+
               {/* Center Content */}
               <div className="w-full lg:w-[40%]">
                 <BigCard news={getRandomNews(news, 1)[0]} key="bigcard-top" />
               </div>
-              
+
               {/* Latest News */}
               <div className="w-full lg:w-[35%]">
                 <h3 className="text-lg md:text-xl font-bold mb-4">Latest</h3>
@@ -159,7 +157,10 @@ export default function HomeClient() {
             {betweenContentAds && betweenContentAds.length > 0 && (
               <div className="flex flex-col sm:flex-row gap-4 max-w-4xl mx-auto py-6 md:py-9">
                 {betweenContentAds.slice(0, 2).map((ad: any, idx: number) => (
-                  <div className="flex-1" key={ad._id || `between-content-${idx}`}>
+                  <div
+                    className="flex-1"
+                    key={ad._id || `between-content-${idx}`}
+                  >
                     <Image
                       className="w-full h-auto rounded-lg"
                       src={urlFor(ad.banner).url()}
@@ -177,7 +178,10 @@ export default function HomeClient() {
               <h3 className="text-lg md:text-xl font-bold mb-4">Most Read</h3>
               <div className="w-full">
                 <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-4 lg:gap-6">
-                  <NewsCard news={getRandomNews(news, 4)} key="newscard-mostread" />
+                  <NewsCard
+                    news={getRandomNews(news, 4)}
+                    key="newscard-mostread"
+                  />
                 </div>
               </div>
             </div>
@@ -206,15 +210,18 @@ export default function HomeClient() {
 
             {/* Main Content Grid */}
             <div className="flex flex-col xl:flex-row gap-6">
-              
               {/* Left Content */}
               <div className="w-full xl:w-[70%]">
-                
                 {/* Sponsored Posts */}
                 <div className="mb-8">
-                  <h3 className="text-lg md:text-xl font-bold mb-4">Sponsored Posts</h3>
+                  <h3 className="text-lg md:text-xl font-bold mb-4">
+                    Sponsored Posts
+                  </h3>
                   <div className="space-y-4">
-                    <SponsorPost news={getRandomNews(news, 4)} key="sponsorpost-main" />
+                    <SponsorPost
+                      news={getRandomNews(news, 4)}
+                      key="sponsorpost-main"
+                    />
                   </div>
                 </div>
 
@@ -233,37 +240,68 @@ export default function HomeClient() {
 
                 {/* News Sections */}
                 {[
-                  { title: "Copper News", filter: "Copper News", component: TextCard },
-                  { title: "Precious Metals", filter: "Precious Metals", component: SponsorPost },
-                  { title: "World News", filter: "World News", component: TextCard },
-                  { title: "Leadership Thoughts", filter: "Leadership Thoughts", component: SponsorPost },
-                  { title: "Corporate News", filter: "Corporate News", component: TextCard },
+                  {
+                    title: "Copper News",
+                    filter: "Copper News",
+                    component: TextCard,
+                  },
+                  {
+                    title: "Precious Metals",
+                    filter: "Precious Metals",
+                    component: SponsorPost,
+                  },
+                  {
+                    title: "World News",
+                    filter: "World News",
+                    component: TextCard,
+                  },
+                  {
+                    title: "Leadership Thoughts",
+                    filter: "Leadership Thoughts",
+                    component: SponsorPost,
+                  },
+                  {
+                    title: "Corporate News",
+                    filter: "Corporate News",
+                    component: TextCard,
+                  },
                 ].map((section, index) => (
                   <div key={section.title} className="mb-8">
-                    <h3 className="text-lg md:text-xl font-bold mb-4">{section.title}</h3>
+                    <h3 className="text-lg md:text-xl font-bold mb-4">
+                      {section.title}
+                    </h3>
                     <section.component
                       news={getFilteredNews(news, 4, section.filter)}
-                      key={`${section.title.toLowerCase().replace(' ', '')}-section`}
+                      key={`${section.title
+                        .toLowerCase()
+                        .replace(" ", "")}-section`}
                     />
-                    
+
                     {/* Ad between sections */}
-                    {betweenContentAds && betweenContentAds[index % betweenContentAds.length] && (
-                      <div className="py-4 mt-6">
-                        <Image
-                          className="w-full h-auto rounded-lg"
-                          src={urlFor(betweenContentAds[index % betweenContentAds.length].banner).url()}
-                          width={800}
-                          height={200}
-                          alt="Advertisement"
-                        />
-                      </div>
-                    )}
+                    {betweenContentAds &&
+                      betweenContentAds[index % betweenContentAds.length] && (
+                        <div className="py-4 mt-6">
+                          <Image
+                            className="w-full h-auto rounded-lg"
+                            src={urlFor(
+                              betweenContentAds[
+                                index % betweenContentAds.length
+                              ].banner
+                            ).url()}
+                            width={800}
+                            height={200}
+                            alt="Advertisement"
+                          />
+                        </div>
+                      )}
                   </div>
                 ))}
 
                 {/* Magazine Section */}
                 <div className="pt-6 border-t border-gray-400 mt-8">
-                  <h3 className="text-lg md:text-xl font-bold mb-4">Magazine</h3>
+                  <h3 className="text-lg md:text-xl font-bold mb-4">
+                    Magazine
+                  </h3>
                   <MagazineCard key="magazinecard-main" />
                 </div>
               </div>
@@ -271,10 +309,11 @@ export default function HomeClient() {
               {/* Right Sidebar */}
               <div className="w-full xl:w-[30%]">
                 <div className="space-y-8">
-                  
                   {/* Popular This Week */}
                   <div>
-                    <h3 className="text-lg md:text-xl font-bold mb-4">Popular This Week</h3>
+                    <h3 className="text-lg md:text-xl font-bold mb-4">
+                      Popular This Week
+                    </h3>
                     <PopularCard
                       news={getFilteredNews(news, 4, "Popular This Week")}
                       key="popularcard-main"
@@ -283,13 +322,17 @@ export default function HomeClient() {
 
                   {/* Latest Multimedia */}
                   <div>
-                    <h3 className="text-lg md:text-xl font-bold mb-4">Latest Multimedia</h3>
+                    <h3 className="text-lg md:text-xl font-bold mb-4">
+                      Latest Multimedia
+                    </h3>
                     <Latestmedia key="latestmedia-main" />
                   </div>
 
                   {/* Research Reports */}
                   <div>
-                    <h3 className="text-lg md:text-xl font-bold mb-4">Research Reports</h3>
+                    <h3 className="text-lg md:text-xl font-bold mb-4">
+                      Research Reports
+                    </h3>
                     <Researchreport
                       key="researchreport-main"
                       news={getFilteredNews(news, 4, "Research Reports")}
@@ -298,7 +341,9 @@ export default function HomeClient() {
 
                   {/* Projects */}
                   <div>
-                    <h3 className="text-lg md:text-xl font-bold mb-4">Projects</h3>
+                    <h3 className="text-lg md:text-xl font-bold mb-4">
+                      Projects
+                    </h3>
                     <Projects
                       key="projects-main"
                       news={getFilteredNews(news, 4, "Projects")}
@@ -311,7 +356,6 @@ export default function HomeClient() {
             {/* Press Office & What's On Section */}
             <div className="mt-12">
               <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-                
                 {/* Press Office Section */}
                 <div className="w-full lg:w-1/2">
                   <h2 className="text-xl md:text-2xl font-bold mb-6 text-[#ac8a4a] border-b-2 border-[#ac8a4a] pb-2">
@@ -319,21 +363,35 @@ export default function HomeClient() {
                   </h2>
                   <div className="space-y-4">
                     {getFilteredNews(news, 5, "Announcement").length > 0 ? (
-                      getFilteredNews(news, 5, "Announcement").map((announcement: any, index: number) => (
-                        <div key={`announcement-${index}`} className="border-b border-gray-200 pb-3 last:border-b-0">
-                          <h4 className="font-semibold text-gray-800 hover:text-[#ac8a4a] transition-colors cursor-pointer">
-                            {announcement.title || `Announcement ${index + 1}`}
-                          </h4>
-                          <p className="text-sm text-gray-600 mt-1">
-                            {announcement.excerpt || announcement.description || "Important announcement from the press office."}
-                          </p>
-                          <span className="text-xs text-gray-500">
-                            {announcement.publishedAt ? new Date(announcement.publishedAt).toLocaleDateString() : "Recent"}
-                          </span>
-                        </div>
-                      ))
+                      getFilteredNews(news, 5, "Announcement").map(
+                        (announcement: any, index: number) => (
+                          <div
+                            key={`announcement-${index}`}
+                            className="border-b border-gray-200 pb-3 last:border-b-0"
+                          >
+                            <h4 className="font-semibold text-gray-800 hover:text-[#ac8a4a] transition-colors cursor-pointer">
+                              {announcement.title ||
+                                `Announcement ${index + 1}`}
+                            </h4>
+                            <p className="text-sm text-gray-600 mt-1">
+                              {announcement.excerpt ||
+                                announcement.description ||
+                                "Important announcement from the press office."}
+                            </p>
+                            <span className="text-xs text-gray-500">
+                              {announcement.publishedAt
+                                ? new Date(
+                                    announcement.publishedAt
+                                  ).toLocaleDateString()
+                                : "Recent"}
+                            </span>
+                          </div>
+                        )
+                      )
                     ) : (
-                      <div className="text-gray-500 italic">No announcements available at this time.</div>
+                      <div className="text-gray-500 italic">
+                        No announcements available at this time.
+                      </div>
                     )}
                   </div>
                 </div>
@@ -345,28 +403,41 @@ export default function HomeClient() {
                   </h2>
                   <div className="space-y-4">
                     {getFilteredNews(news, 5, "What's On").length > 0 ? (
-                      getFilteredNews(news, 5, "What's On").map((event: any, index: number) => (
-                        <div key={`whatson-${index}`} className="border-b border-gray-200 pb-3 last:border-b-0">
-                          <h4 className="font-semibold text-gray-800 hover:text-[#ac8a4a] transition-colors cursor-pointer">
-                            {event.title || `Event ${index + 1}`}
-                          </h4>
-                          <p className="text-sm text-gray-600 mt-1">
-                            {event.excerpt || event.description || "Upcoming event in the mining industry."}
-                          </p>
-                          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2">
-                            <span className="text-xs text-gray-500">
-                              {event.publishedAt ? new Date(event.publishedAt).toLocaleDateString() : "Date TBA"}
-                            </span>
-                            {event.location && (
-                              <span className="text-xs text-[#ac8a4a] font-medium">
-                                📍 {event.location}
+                      getFilteredNews(news, 5, "What's On").map(
+                        (event: any, index: number) => (
+                          <div
+                            key={`whatson-${index}`}
+                            className="border-b border-gray-200 pb-3 last:border-b-0"
+                          >
+                            <h4 className="font-semibold text-gray-800 hover:text-[#ac8a4a] transition-colors cursor-pointer">
+                              {event.title || `Event ${index + 1}`}
+                            </h4>
+                            <p className="text-sm text-gray-600 mt-1">
+                              {event.excerpt ||
+                                event.description ||
+                                "Upcoming event in the mining industry."}
+                            </p>
+                            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mt-2">
+                              <span className="text-xs text-gray-500">
+                                {event.publishedAt
+                                  ? new Date(
+                                      event.publishedAt
+                                    ).toLocaleDateString()
+                                  : "Date TBA"}
                               </span>
-                            )}
+                              {event.location && (
+                                <span className="text-xs text-[#ac8a4a] font-medium">
+                                  📍 {event.location}
+                                </span>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      ))
+                        )
+                      )
                     ) : (
-                      <div className="text-gray-500 italic">No events scheduled at this time.</div>
+                      <div className="text-gray-500 italic">
+                        No events scheduled at this time.
+                      </div>
                     )}
                   </div>
                 </div>
@@ -385,7 +456,6 @@ export default function HomeClient() {
 
           {/* Right Side Content */}
           <div className="w-full xl:w-[28%] flex flex-col lg:flex-row xl:flex-col gap-6">
-            
             {/* Adds Component */}
             <div className="w-full lg:w-1/2 xl:w-full">
               <Adds key="adds-main" />
@@ -393,7 +463,7 @@ export default function HomeClient() {
 
             {/* YouTube Videos */}
             <div className="w-full lg:w-1/2 xl:w-full">
-              <FloatingVideo/>
+              <FloatingVideo />
             </div>
           </div>
         </div>
