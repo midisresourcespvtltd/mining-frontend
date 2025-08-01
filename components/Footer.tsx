@@ -1,218 +1,160 @@
-
+import { partnerLogosData } from "@/data";
 import Image from "next/image";
 import Slider from "react-slick";
+import { Marquee } from "./magicui/marquee";
 
 export default function Footer() {
-
   return (
-    <div className="bg-[#000] pt-[90px]">
-      <div className="max-w-[1300px] m-auto">
+    <div className="bg-black pt-16 md:pt-20 lg:pt-24 px-4 sm:px-6 lg:px-8 my-4">
+      <div className="max-w-7xl mx-auto">
         <div className="flex flex-wrap">
-          <div className="w-[100%] pr-0 text-center">
+          {/* Logo Section */}
+          <div className="w-full text-center mb-8 md:mb-10">
             <Image
-              className="m-auto"
+              className="mx-auto"
               src="/assets/images/logo-png.png"
-              width={250}
-              height={100}
-              alt=""
+              width={200}
+              height={80}
+              alt="Company Logo"
+              priority
             />
           </div>
-          <div className="w-[100%]">
-            <ul className="flex gap-x-12 justify-center pt-10">
-              <li className="pb-2">
-                <a href="#" className="text-[#ECECEC] text-15xl font-medium">
+
+          {/* Navigation Links */}
+          <div className="w-full">
+            {/* Main Navigation */}
+            <ul className="flex flex-wrap gap-x-4 gap-y-3 sm:gap-x-8 md:gap-x-12 justify-center mb-6 md:mb-8">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-200 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors duration-200"
+                >
                   TOPIC
                 </a>
               </li>
-              <li className="pb-2">
-                <a href="#" className="text-[#ECECEC] text-15xl font-medium">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-200 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors duration-200"
+                >
                   ABOUT US
                 </a>
               </li>
-              <li className="pb-2">
-                <a href="#" className="text-[#ECECEC] text-15xl font-medium">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-200 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors duration-200"
+                >
                   MARKETING VIDEOS
                 </a>
               </li>
-              <li className="pb-2">
-                <a href="#" className="text-[#ECECEC] text-15xl font-medium">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-200 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors duration-200"
+                >
                   SUBSCRIPTION
                 </a>
               </li>
-              <li className="pb-2">
-                <a href="#" className="text-[#ECECEC] text-15xl font-medium">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-200 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors duration-200"
+                >
                   APPS
                 </a>
               </li>
             </ul>
-            <ul className="flex gap-x-12 justify-center pt-3 pb-10">
-              <li className="pb-2">
-                <a href="#" className="text-[#ECECEC] text-15xl font-medium">
+
+            {/* Secondary Navigation */}
+            <ul className="flex flex-wrap gap-x-4 gap-y-3 sm:gap-x-8 md:gap-x-12 justify-center mb-8 md:mb-10">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-200 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors duration-200"
+                >
                   Comment Guideline
                 </a>
               </li>
-              <li className="pb-2">
-                <a href="#" className="text-[#ECECEC] text-15xl font-medium">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-200 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors duration-200"
+                >
                   Legal Notice
                 </a>
               </li>
-              <li className="pb-2">
-                <a href="#" className="text-[#ECECEC] text-15xl font-medium">
+              <li>
+                <a
+                  href="#"
+                  className="text-gray-200 text-sm sm:text-base md:text-lg font-medium hover:text-white transition-colors duration-200"
+                >
                   Copyright © 2025
                 </a>
               </li>
             </ul>
           </div>
-          <div className="w-[100%]">
-            <ul className="fotter-logo flex flex-wrap gap-x-12 justify-center border-t-[1px]  border-b-[1px] border-[#fff] py-8 ">
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/ftone.png"
-                  width={130}
-                  height={100}
-                  alt=""
-                />
-              </li>
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/fttwo.png"
-                  width={130}
-                  height={100}
-                  alt=""
-                />
-              </li>
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/ftthree.png"
-                  width={130}
-                  height={100}
-                  alt=""
-                />
-              </li>
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/ftfour.png"
-                  width={130}
-                  height={100}
-                  alt=""
-                />
-              </li>
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/ftfive.png"
-                  width={180}
-                  height={130}
-                  alt=""
-                />
-              </li>
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/ftsix-n.png"
-                  width={180}
-                  height={130}
-                  alt=""
-                />
-              </li>
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/ftseven.png"
-                  width={180}
-                  height={130}
-                  alt=""
-                />
-              </li>
-               <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/fteight.png"
-                  width={180}
-                  height={130}
-                  alt=""
-                />
-              </li>
-               <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/ftnine.png"
-                  width={180}
-                  height={130}
-                  alt=""
-                />
-              </li>
-               <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/ftten.png"
-                  width={180}
-                  height={130}
-                  alt=""
-                />
-              </li>
-               <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/fteleven-n.png"
-                  width={180}
-                  height={130}
-                  alt=""
-                />
-              </li>
-            </ul>
-          </div>
-          {/* <div className="w-[100%]">
-            <ul className="flex gap-x-12 justify-center  py-8 items-center">
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/lab-one.png"
-                  width={60}
-                  height={60}
-                  alt=""
-                />
-              </li>
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/lab-two.jpg"
-                  width={60}
-                  height={60}
-                  alt=""
-                />
-              </li>
-              <li>
-                {" "}
-                <Image
-                  className="m-auto"
-                  src="/assets/images/lab-three.png"
-                  width={60}
-                  height={60}
-                  alt=""
-                />
-              </li>
-            </ul>
-          </div> */}
-          <div className="slick-main-slider">
+          {/* Partner/Client Logos Section */}
+          <div className="w-full">
+            <div className="border-t border-b border-white py-6 md:py-8 space-y-6">
+              {(() => {
+                const topLogos = partnerLogosData.slice(0, 6);
+                const bottomLogos = partnerLogosData.slice(6);
 
+                return (
+                  <>
+                    {/* First Line - Left to Right */}
+                    <Marquee
+                      pauseOnHover={true}
+                      className="gap-8 md:gap-12 lg:gap-16"
+                    >
+                      {topLogos.map((logo) => (
+                        <div
+                          key={logo.id}
+                          className={`flex items-center justify-center min-w-[140px] md:min-w-[180px] lg:min-w-[200px] ${
+                            logo.specialClass || ""
+                          }`}
+                        >
+                          <Image
+                            src={logo.src}
+                            width={logo.width}
+                            height={logo.height}
+                            alt={logo.alt}
+                            title={logo.name}
+                            className="max-w-full h-auto hover:opacity-80 transition-opacity duration-200 cursor-pointer bg-white px-4 py-4 rounded-lg"
+                          />
+                        </div>
+                      ))}
+                    </Marquee>
+
+                    {/* Second Line - Right to Left */}
+                    <Marquee
+                      reverse={true}
+                      pauseOnHover={true}
+                      className="gap-8 md:gap-12 lg:gap-16"
+                    >
+                      {bottomLogos.map((logo) => (
+                        <div
+                          key={`second-${logo.id}`}
+                          className={`flex items-center justify-center min-w-[140px] md:min-w-[180px] lg:min-w-[200px] ${
+                            logo.specialClass || ""
+                          }`}
+                        >
+                          <Image
+                            src={logo.src}
+                            width={logo.width}
+                            height={logo.height}
+                            alt={logo.alt}
+                            title={logo.name}
+                            className="max-w-full h-auto hover:opacity-80 transition-opacity duration-200 cursor-pointer bg-white px-4 py-4 rounded-lg"
+                          />
+                        </div>
+                      ))}
+                    </Marquee>
+                  </>
+                );
+              })()}
+            </div>
           </div>
         </div>
       </div>
