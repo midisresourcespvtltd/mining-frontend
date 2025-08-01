@@ -5,7 +5,7 @@ import { Marquee } from "./magicui/marquee";
 
 export default function Footer() {
   return (
-    <div className="bg-black pt-16 md:pt-20 lg:pt-24 px-4 sm:px-6 lg:px-8 my-4">
+    <div className="bg-black pt-16 md:pt-20 lg:pt-24 px-4 sm:px-6 lg:px-8 mt-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-wrap">
           {/* Logo Section */}

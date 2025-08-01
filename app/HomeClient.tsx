@@ -15,9 +15,11 @@ import Researchreport from "@/components/cards/researchreport";
 import Projects from "@/components/cards/projects";
 
 import { urlFor } from "./lib/sanity";
+import FloatingVideo from "@/components/FloatingVideo";
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_BASE_URL || "https://miningdiscovery.com";
+const baseUrl ="http://localhost:3000/"
+
+  // process.env.NEXT_PUBLIC_BASE_URL || "https://miningdiscovery.com";
 
 function getRandomNews(newsArray: any[], count: number, type?: string) {
   if (type === "latest") return newsArray.slice(0, count);
@@ -391,33 +393,7 @@ export default function HomeClient() {
 
             {/* YouTube Videos */}
             <div className="w-full lg:w-1/2 xl:w-full">
-              <div className="space-y-4">
-                <h3 className="text-lg md:text-xl font-bold mb-4">Featured Videos</h3>
-                
-                {/* First Video */}
-                <div className="relative w-full aspect-video">
-                  <iframe
-                    className="absolute inset-0 w-full h-full rounded-lg"
-                    src="https://www.youtube.com/embed/Fg06vz1Krcc?si=gwWIU-4UA7cHCQBK"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-
-                {/* Second Video */}
-                <div className="relative w-full aspect-video">
-                  <iframe
-                    className="absolute inset-0 w-full h-full rounded-lg"
-                    src="https://www.youtube.com/embed/Syeu_l3sAJE?si=HxxYp0UrwVkz1AM2"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
+              <FloatingVideo/>
             </div>
           </div>
         </div>
