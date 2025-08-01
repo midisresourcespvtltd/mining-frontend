@@ -16,8 +16,8 @@ import Projects from "@/components/cards/projects";
 
 import { urlFor } from "./lib/sanity";
 
-const baseUrl = "http://localhost:3000"
-  // process.env.NEXT_PUBLIC_BASE_URL || "https://miningdiscovery.com";
+const baseUrl =
+  process.env.NEXT_PUBLIC_BASE_URL || "https://miningdiscovery.com";
 
 function getRandomNews(newsArray: any[], count: number, type?: string) {
   if (type === "latest") return newsArray.slice(0, count);
