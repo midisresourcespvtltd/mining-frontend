@@ -17,11 +17,11 @@ const FloatingVideo = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Close button - appears on hover */}
+      {/* Close button - appears on hover (desktop) or always visible (mobile) */}
       <button
         onClick={handleClose}
         className={`absolute top-2 right-2 z-10 bg-black/60 hover:bg-black/80 text-white rounded-full p-1 transition-all duration-200 ${
-          isHovered ? 'opacity-100 visible' : 'opacity-0 invisible'
+          isHovered ? 'opacity-100 visible' : 'md:opacity-0 md:invisible opacity-100 visible'
         }`}
         aria-label="Close video"
       >
