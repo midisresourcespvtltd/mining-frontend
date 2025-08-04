@@ -16,6 +16,7 @@ import Projects from "@/components/cards/projects";
 
 import { urlFor } from "./lib/sanity";
 import FloatingVideo from "@/components/FloatingVideo";
+import Loader from "@/components/Loader";
 
 const baseUrl =
   process.env.NEXT_PUBLIC_BASE_URL || "https://miningdiscovery.com";
@@ -77,15 +78,7 @@ export default function HomeClient() {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <Image
-          src="/assets/images/loader.gif"
-          alt="Loading..."
-          width={100}
-          height={100}
-          // className="animate-spin"
-        />
-      </div>
+      <Loader/>
     );
 
   if (error)

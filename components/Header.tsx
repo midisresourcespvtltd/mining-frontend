@@ -244,7 +244,7 @@ const Header: React.FC<HeaderProps> = ({ NewsMenu }) => {
 
               {/* Title */}
               <h3 className="text-lg sm:text-xl font-bold text-center mt-4 mb-2 text-gray-900">
-                Discover more from Mining's Substack
+                Discover more from Mining's Discovery
               </h3>
 
               {/* Description */}
@@ -294,7 +294,7 @@ const Header: React.FC<HeaderProps> = ({ NewsMenu }) => {
               )}
 
               {/* Terms */}
-              <p className="text-xs text-gray-500 mb-3 text-center leading-relaxed">
+              {/* <p className="text-xs text-gray-500 mb-3 text-center leading-relaxed">
                 By Subscribing, I agree to Substack's{" "}
                 <a
                   href="#"
@@ -316,7 +316,7 @@ const Header: React.FC<HeaderProps> = ({ NewsMenu }) => {
                 >
                   Privacy Policy
                 </a>
-              </p>
+              </p> */}
 
               {/* Sign in link */}
               <p className="text-center text-sm text-gray-600">
